@@ -100,7 +100,7 @@
         <div class="popular-items clearfix">
           {%for product in products%}
           <div class="catalog-item">
-            <img src="{{product.image}}" alt="{{product.name}}" width="306" height="206">
+            <img src="{{ url_for('static', filename=product.image) }}" alt="{{product.name}}" width="306" height="206">
             <h3>{{product.name}}</h3>
             <b class="catalog-item-price">{{product.price}} р.</b>
             <h3>Время выполнения:</h3>
