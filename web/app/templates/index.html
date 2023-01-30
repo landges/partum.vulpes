@@ -2,7 +2,7 @@
 <html lang="ru">
   <head>
     <meta charset="utf-8">
-    <title>The Great Keksby</title>
+    <title>Мастерская "Золотые лапки"</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
   </head>
   <body>
@@ -83,11 +83,11 @@
         <div class="popular-items clearfix">
           {%for product in products%}
           <div class="catalog-item">
-            <img src="img/glasses-1.jpg" alt="очки «Классика жанра»" width="306" height="206">
-            <h3>Очки «Классика жанра»</h3>
-            <b class="catalog-item-price">300 р.</b>
-            <h3>Очки «Классика жанра»</h3>
-            <b class="catalog-item-price">300 р.</b>
+            <img src="{{product.image}}" alt="{{product.name}}" width="306" height="206">
+            <h3>{{product.name}}</h3>
+            <b class="catalog-item-price">{{product.price}} р.</b>
+            <h3>Время выполнения:</h3>
+            <b class="catalog-item-price">{{product.time}} часов</b>
             <a class="btn btn-info" href="#">Описание</a>
             <a class="btn btn-buy" href="#">Купить</a>
           </div>
@@ -225,7 +225,7 @@
 
         <div class="footer-bottom clearfix">
           <div class="footer-logo">
-            <img src="{{ url_for('static', filename='img/logo2.svg') }}" alt="The Great Keksby" width="55" height="60">
+            <img src="{{ url_for('static', filename='img/logo2.svg') }}" alt="Logo" width="55" height="60">
           </div>
 
           <div class="footer-social">

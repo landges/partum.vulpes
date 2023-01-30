@@ -20,6 +20,7 @@ class Order(db.Model):
     phone = Column(String(15))
     content = Column(String(1000), nullable=False)
     created_on = Column(DateTime(), default=datetime.datetime.now)
+    # confirm = Column(Boolean)
 
 class ProductInOrder(db.Model):
     id = Column(Integer, primary_key=True)
