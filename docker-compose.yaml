@@ -1,0 +1,40 @@
+version: "3"
+services:
+
+  postgres:
+    container_name: postgres
+    image: postgres
+    networks:
+      - main
+    ports:
+      - 5434:5432
+    volumes:
+      - pg-data:/var/lib/postgresql/data
+    environment:
+      - POSTGRES_DB=postgres
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+
+  web:
+    build: ./web
+    command: gunicorn --workers=3 --bind=0.0.0.0:5000 run:app
+    volumes:
+      - ./web/:/usr/src/app/
+    ports:
+      - 5000:5000
+    env_file:
+      - ./web/dev.env
+
+  nginx:
+    build: ./nginx
+    ports:
+      - 1337:80
+    depends_on:
+      - web
+
+volumes:
+  pg-data:
+
+networks:
+  main:
+    driver: bridge
