@@ -53,6 +53,16 @@ services:
       - web
     networks:
       - main
+
+  bot:
+    build: ./tg_bot
+    command: python tg_vulpers.py
+    volumes:
+      - ./tg_bot/:/usr/src/app/
+    env_file:
+      - ./tg_bot/prod.env
+    networks:
+      - main
     
 
 volumes:
