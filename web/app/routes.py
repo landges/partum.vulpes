@@ -18,7 +18,7 @@ def index():
     form = OrderForm()
     products = db.session.query(Product).all()
     orders = db.session.query(Order).all()
-    print(orders[0].email)
+    # print(orders[0].email)
     return render_template('index.html', title='Home', products=products, form=form)
 
 
