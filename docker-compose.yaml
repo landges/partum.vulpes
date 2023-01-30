@@ -47,6 +47,8 @@ services:
     build: ./nginx
     ports:
       - 1337:80
+    volumes:
+      - /etc/ssl/:/etc/ssl/
     depends_on:
       - web
     networks:
