@@ -15,6 +15,22 @@ services:
       - POSTGRES_USER=postgres
       - POSTGRES_PASSWORD=postgres
 
+  pgadmin:
+    container_name: pgadmin
+    image: dpage/pgadmin4
+    environment:
+      PGADMIN_DEFAULT_EMAIL: pgadmin4@pgadmin.org
+      PGADMIN_DEFAULT_PASSWORD: admin
+    volumes:
+      - pgadmin:/root/.pgadmin
+    ports:
+      - 5050:80
+    depends_on:
+      - "postgres"
+    networks:
+      - main
+    restart: unless-stopped
+
   web:
     build: ./web
     command: gunicorn --workers=3 --bind=0.0.0.0:5000 run:app
@@ -39,6 +55,7 @@ services:
 
 volumes:
   pg-data:
+  pgadmin:
 
 networks:
   main:

@@ -25,6 +25,7 @@ def index():
 @app.route('/order', methods=['POST'])
 def order():
     form = OrderForm()
+    print('here2')
     if form.validate_on_submit():
         print(form.name.data)
         print('here')
