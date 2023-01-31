@@ -170,7 +170,7 @@
         <h2 class="section-title">Оставить заявку:</h2>
         <p class="feedback-tip">Свяжитесь с нами и мы развеем оставшиеся у вас сомнения!</p>
 
-        <form class="feedback-form" action="/order" method="post">
+        <form class="feedback-form" action="{%url 'main'%}" method="post">
           {%csrf_token%}
           <div class="feedback-form-group">
             <label for="fullname">Представьтесь, пожалуйста:</label>

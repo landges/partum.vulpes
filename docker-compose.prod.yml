@@ -5,36 +5,36 @@ services:
     build:
       context: ./app
       dockerfile: Dockerfile.prod
-    command: gunicorn hello_django.wsgi:application --bind 0.0.0.0:8000
-    volumes:
-      - static_volume:/home/fox/Documents/GitHub/partum.vulpes/app/staticfiles
-      - media_volume:/home/fox/Documents/GitHub/partum.vulpes/app/mediafiles
-    expose:
-      - 8000
-    env_file:
-      - ./.env.prod
-    depends_on:
-      - postgres
-      
-  postgres:
-    image: postgres
-    volumes:
-      - postgres_data:/var/lib/postgresql/data/
-    env_file:
-      - ./.env.prod.db
-    
-  
-  nginx:
-    build: ./nginx
-    volumes:
-      - static_volume:/home/fox/Documents/GitHub/partum.vulpes/app/staticfiles
-      - media_volume:/home/fox/Documents/GitHub/partum.vulpes/app/mediafiles
-    ports:
-      - 1337:80
-    depends_on:
-      - web
+      command: gunicorn hello_django.wsgi:application --bind 0.0.0.0:8000
+      volumes:
+        - ./app/staticfiles:/home/app/web/staticfiles
+        - ./app/meadiafiles:/home/app/web/mediafiles
+      expose:
+        - 8000
+      env_file:
+        - ./.env.prod
+      depends_on:
+        - postgres
 
-volumes:
-  postgres_data:
-  static_volume:
-  media_volume:
+    postgres:
+      image: postgres
+      volumes:
+        - postgres_data:/var/lib/postgresql/data/
+      env_file:
+        - ./.env.prod.db
+
+
+    nginx:
+      build: ./nginx
+      volumes:
+        - ./app/staticfiles:/staticfiles
+        - ./app/mediafiles:/mediafiles
+      ports:
+        - 80:80
+        - 443:443
+      depends_on:
+        - web
+
+  volumes:
+    postgres_data:
+
