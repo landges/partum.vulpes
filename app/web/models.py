@@ -6,7 +6,7 @@ class Product(models.Model):
     name = models.CharField(max_length=120)
     price = models.IntegerField()
     time = models.IntegerField()
-    image = models.ImageField(upload_to='products/')
+    image = models.CharField(max_length=300)
 
 class Order(models.Model):
     username = models.CharField(max_length=64, db_index=True)

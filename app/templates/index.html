@@ -101,13 +101,13 @@
         <div class="popular-items clearfix">
           {%for product in products%}
           <div class="catalog-item">
-            <img src="{{product.image.path}}" alt="{{product.name}}" width="306" height="206">
+            <img src="{%static product.image%}" alt="{{product.name}}" width="306" height="306">
             <h3>{{product.name}}</h3>
             <b class="catalog-item-price">{{product.price}} р.</b>
-            <h3>Время выполнения:</h3>
-            <b class="catalog-item-price">{{product.time}} часов</b>
-            <a class="btn btn-info" href="#">Описание</a>
-            <a class="btn btn-buy" href="#">Купить</a>
+            <!-- <h3>Время выполнения:</h3>
+            <b class="catalog-item-price">{{product.time}} часов</b> -->
+            <!-- <a class="btn btn-info" href="#">Описание</a>
+            <a class="btn btn-buy" href="#">Купить</a> -->
           </div>
           {%endfor%}
         </div>
@@ -248,9 +248,9 @@
 
           <div class="footer-social">
             <b>Давайте дружить!</b>
-            <a class="social-btn social-btn-vk" href="https://vk.com/partum.vulpes">Вконтакте</a>
-            <a class="social-btn social-btn-fb" href="https://facebook.com/partum.vulpes">Фейсбук</a>
-            <a class="social-btn social-btn-in" href="https://instagram.com/partum.vulpes">Инстаграм</a>
+            <a class="social-btn social-btn-vk" href="https://vk.com/amberfox.art">Вконтакте</a>
+            <a class="social-btn social-btn-fb" href="https://facebook.com/amberfox.art">Фейсбук</a>
+            <a class="social-btn social-btn-in" href="https://instagram.com/amberfox.art">Инстаграм</a>
           </div>
         </div>
       </div>

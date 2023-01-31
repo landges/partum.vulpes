@@ -9,6 +9,7 @@ class MainView(View):
         print('here')
         form=OrderForm()
         products=Product.objects.all()
+        
         return render(request, 'index.html', context={"form":form,
                                                       "products":products})
 
