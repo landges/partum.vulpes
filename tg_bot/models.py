@@ -12,7 +12,7 @@ engine = create_engine(os.environ['DBURL'])
 
 
 class Product(Base):
-    __tablename__ = "product"
+    __tablename__ = "web_product"
     id = Column(Integer, primary_key=True)
     name = Column(String(120))
     price = Column(Integer)
@@ -20,7 +20,7 @@ class Product(Base):
     image = Column(String(150))
 
 class Order(Base):
-    __tablename__ = "order"
+    __tablename__ = "web_order"
     id = Column(Integer, primary_key=True)
     username = Column(String(64), index=True)
     email = Column(String(120), index=True)
@@ -31,7 +31,7 @@ class Order(Base):
     is_pay = Column(Boolean(), default=False)
 
 class ProductInOrder(Base):
-    __tablename__ = "product_in_order"
+    __tablename__ = "web_product_in_order"
     id = Column(Integer, primary_key=True)
     order_id = Column(Integer(), ForeignKey('order.id'))
     product_id = Column(Integer(), ForeignKey('product.id'))
