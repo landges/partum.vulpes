@@ -717,3 +717,7 @@ body {
 .footer-copyright a:active {
   color: rgba(255, 255, 255, 0.3);
 }
+.swiper {
+  width: 600px;
+  height: 300px;
+}

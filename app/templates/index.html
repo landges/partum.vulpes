@@ -6,6 +6,10 @@
     <link type="image/x-icon" rel="shortcut icon" href="{% static 'img/logo.svg'%}">
     <title>Мастерская "Amber Fox"</title>
     <link rel="stylesheet" href="{% static 'css/style.css'%}">
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.css"/>
+
+    <script src="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.js"></script>
   </head>
   <body>
    <!-- Yandex.Metrika counter -->
@@ -98,20 +102,65 @@
       <div class="container">
         <h2 class="section-title">Популярные товары</h2>
         <!-- <a class="btn to-catalog" href="#" title="Посмотреть все товары">Каталог</a> -->
-        <div class="popular-items clearfix">
-          {%for product in products%}
-          <div class="catalog-item">
-            <img src="{%static product.image%}" alt="{{product.name}}" width="306" height="306">
-            <h3>{{product.name}}</h3>
-            <b class="catalog-item-price">{{product.price}} р.</b>
-            <!-- <h3>Время выполнения:</h3>
-            <b class="catalog-item-price">{{product.time}} часов</b> -->
-            <!-- <a class="btn btn-info" href="#">Описание</a>
-            <a class="btn btn-buy" href="#">Купить</a> -->
-          </div>
-          {%endfor%}
+        <div class="popular-items clearfix swiper">
+            <div class="swiper-wrapper">
+            {%for product in products%}
+            <div class="swiper-slide">
+            <div class="catalog-item">
+                <img src="{%static product.image%}" alt="{{product.name}}" width="306" height="306">
+                <h3>{{product.name}}</h3>
+                <b class="catalog-item-price">{{product.price}} р.</b>
+                <!-- <h3>Время выполнения:</h3>
+                <b class="catalog-item-price">{{product.time}} часов</b> -->
+                <!-- <a class="btn btn-info" href="#">Описание</a>
+                <a class="btn btn-buy" href="#">Купить</a> -->
+            </div>
+            </div>
+            {%endfor%}
+            </div>
         </div>
+        <script>
+          const swiper = new Swiper('.swiper', {
+          // Optional parameters
+          direction: 'horizontal',
+          loop: true,
+          slidesPerView: 3,
+          spaceBetween: 40,
+          // Responsive breakpoints
+          breakpoints: {
+            // when window width is >= 320px
+            320: {
+              slidesPerView: 2,
+              spaceBetween: 20
+            },
+            // when window width is >= 480px
+            480: {
+              slidesPerView: 3,
+              spaceBetween: 30
+            },
+            // when window width is >= 640px
+            640: {
+              slidesPerView: 3,
+              spaceBetween: 40
+            }
+          }
+          // // If we need pagination
+          // pagination: {
+          //   el: '.swiper-pagination',
+          // },
 
+          // // Navigation arrows
+          // navigation: {
+          //   nextEl: '.swiper-button-next',
+          //   prevEl: '.swiper-button-prev',
+          // },
+
+          // // And if we need scrollbar
+          // scrollbar: {
+          //   el: '.swiper-scrollbar',
+          // },
+        });
+        </script>
         <h2 class="section-title">Прайс-лист на услуги</h2>
         <table class="price-list">
           <tr>
@@ -128,7 +177,7 @@
           </tr>
           <tr>
             <td class="price-number">2.</td>
-            <td class="price-name">Рyчное вязание одежды</td>
+            <td class="price-name">Рyчное вязание</td>
             <td class="price-master">Портной</td>
             <td class="price-cost">3000 руб.</td>
           </tr>
@@ -248,9 +297,9 @@
 
           <div class="footer-social">
             <b>Давайте дружить!</b>
-            <a class="social-btn social-btn-vk" href="https://vk.com/amberfox.art">Вконтакте</a>
-            <a class="social-btn social-btn-fb" href="https://facebook.com/amberfox.art">Фейсбук</a>
-            <a class="social-btn social-btn-in" href="https://instagram.com/amberfox.art">Инстаграм</a>
+            <a class="social-btn social-btn-vk" href="https://vk.com/amberfox.art" target="_blank">Вконтакте</a>
+            <!-- <a class="social-btn social-btn-fb" href="https://facebook.com/amberfox.art">Фейсбук</a> -->
+            <a class="social-btn social-btn-in" href="https://instagram.com/amberfox.art" target="_blank">Инстаграм</a>
           </div>
         </div>
       </div>
