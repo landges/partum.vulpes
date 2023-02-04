@@ -1,10 +1,16 @@
+@font-face {
+  font-family: 'Mulish-VariableFont_wght';
+  src: url('../fonts/Mulish-VariableFont_wght.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
 body {
   min-width: 1040px;
   margin: 0;
   padding: 0;
   font-size: 16px;
   line-height: 24px;
-  font-family: "Arial", sans-serif;
+  font-family: "Mulish-VariableFont_wght", sans-serif;
   color: #404040;
   background-color: white;
 }
@@ -131,7 +137,7 @@ body {
   font-weight: bold;
   font-size: 45px;
   line-height: 55px;
-  font-family: "Georgia", serif;
+  font-family: "Mulish-VariableFont_wght", serif;
   text-align: center;
 }
 
@@ -195,7 +201,7 @@ body {
   font-weight: bold;
   font-size: 30px;
   line-height: 30px;
-  font-family: "Georgia", serif;
+  font-family: "Mulish-VariableFont_wght", serif;
   color: #606C38;
 }
 
@@ -220,7 +226,7 @@ body {
   font-weight: bold;
   font-size: 45px;
   line-height: 55px;
-  font-family: "Georgia", serif;
+  font-family: "Mulish-VariableFont_wght", serif;
   color: #606C38;
 }
 
@@ -607,7 +613,7 @@ body {
   margin-bottom: 20px;
   font-weight: bold;
   font-size: 24px;
-  font-family: "Georgia", serif;
+  font-family: "Mulish-VariableFont_wght", serif;
   color: #FEFAE0;
 }
 
@@ -648,7 +654,7 @@ body {
   margin-right: 40px;
   font-weight: bold;
   font-size: 24px;
-  font-family: "Georgia", serif;
+  font-family: "Mulish-VariableFont_wght", serif;
   color: #FEFAE0;
 }
 
@@ -716,4 +722,8 @@ body {
 
 .footer-copyright a:active {
   color: rgba(255, 255, 255, 0.3);
+}
+.swiper {
+  width: auto;
+  height: 320px;
 }

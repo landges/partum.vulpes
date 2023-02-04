@@ -6,6 +6,7 @@ __pycache
 .env.prod.db
 .env.dev-sample
 app/staticfiles/admin
+app/static/admin
 venv/
 tg_bot/prod.env
 app/prod.env
