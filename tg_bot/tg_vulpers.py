@@ -21,7 +21,7 @@ def main():
     #Формирование очереди сообщений
         result_msg = ''
         for order in orders:
-            result_msg += f"Order:{order.id}\n{order.username}\n{order.email}\n{order.phone}\n{order.content}"
+            result_msg += f"Order:{order.id}\n{order.name}\n{order.email}\n{order.phone}\n{order.content}"
             result_msg +="\n\n"
             order.is_confirm = True
             session.add(order)
