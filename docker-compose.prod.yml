@@ -7,8 +7,8 @@ services:
       dockerfile: Dockerfile.prod
     command: gunicorn hello_django.wsgi:application --bind 0.0.0.0:8000
     volumes:
-      - ./app/staticfiles:/home/app/web/staticfiles
-      - ./app/mediafiles:/home/app/web/mediafiles
+      - static_volume:/home/app/web/staticfiles
+      - media_volume:/home/app/web/mediafiles
     expose:
       - 8000
     env_file:
@@ -28,8 +28,8 @@ services:
   nginx:
     build: ./nginx
     volumes:
-      - ./app/staticfiles:/staticfiles
-      - ./app/mediafiles:/mediafiles
+      - static_volume:/home/app/web/staticfiles
+      - media_volume:/home/app/web/mediafiles
     ports:
       - 80:80
       - 443:443
@@ -61,4 +61,6 @@ services:
 volumes:
   postgres_data:
   pgadmin:
+  static_volume:
+  media_volume:
 

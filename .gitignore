@@ -9,3 +9,6 @@ app/staticfiles/admin
 venv/
 tg_bot/prod.env
 app/prod.env
+*.crt
+*.pem
+*.key
