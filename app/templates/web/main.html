@@ -60,9 +60,9 @@
           {%for product in products%}
           <div class="swiper-slide">
             <div class="catalog-item">
-                <img src="{%static product.image%}" alt="{{product.name}}" width="306" height="306">
+                <img src="{{product.img.url}}" alt="{{product.name}}" width="306" height="306">
                 <h3>{{product.name}}</h3>
-                <b class="catalog-item-price">{{product.price}} р.</b>
+                <b class="catalog-item-price">{{product.price_start}} р.</b>
                 <!-- <h3>Время выполнения:</h3>
                 <b class="catalog-item-price">{{product.time}} часов</b> -->
                 <!-- <a class="btn btn-info" href="#">Описание</a>

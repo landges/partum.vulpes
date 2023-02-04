@@ -6,7 +6,7 @@ from .forms import OrderForm
 # Create your views here.
 class MainView(View):
     def get(self, request):
-        print('here')
+        # print('here')
         form=OrderForm()
         products=Product.objects.all()
         
