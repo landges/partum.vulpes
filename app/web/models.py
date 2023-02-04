@@ -4,12 +4,14 @@ import datetime
 # Create your models here.
 class Product(models.Model):
     name = models.CharField(max_length=120)
-    price = models.IntegerField()
+    price_start = models.IntegerField()
+    price_end = models.IntegerField()
     time = models.IntegerField()
+    img = models.ImageField(upload_to='products')
     image = models.CharField(max_length=300)
 
 class Order(models.Model):
-    username = models.CharField(max_length=64, db_index=True)
+    name = models.CharField(max_length=64, db_index=True)
     email = models.CharField(max_length=120, db_index=True)
     phone = models.CharField(max_length=15)
     content = models.TextField(null=True, blank=True)

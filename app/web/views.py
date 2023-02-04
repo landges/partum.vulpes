@@ -10,7 +10,7 @@ class MainView(View):
         form=OrderForm()
         products=Product.objects.all()
         
-        return render(request, 'index.html', context={"form":form,
+        return render(request, 'web/main.html', context={"form":form,
                                                       "products":products})
 
     def post(self,request):

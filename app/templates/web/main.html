@@ -1,0 +1,176 @@
+{%extends 'index.html'%}
+{%load static%}
+{%block content%}
+<div class="features">
+    <div class="container">
+      <ul class="clearfix">
+        <li class="feature-item feature-choice">
+          <h2 class="feature-title">Выбор</h2>
+          <p>Каждый заказ индивидyально согласовывается с Вами.</p>
+        </li>
+        <li class="feature-item feature-quality">
+          <h2 class="feature-title">Качество</h2>
+          <p>Наша работа не портится на второй день. Все работы выполняются исключительно из качественных материалов.</p>
+        </li>
+        <li class="feature-item feature-safety">
+          <h2 class="feature-title">Безопасность</h2>
+          <p>Все изготовлено из натуральных и безопасных материалов.</p>
+        </li>
+      </ul>
+    </div>
+  </div>
+
+
+  <!-- <div class="cat-reference">
+    <div class="container">
+      <h2 class="section-title">О нас</h2>
+      <a class="btn to-full-reference" href="#" title="Открыть справочник">Справочник</a>
+      <dl>
+        <div class="theory-container">
+          <dt class="reference-title">
+            Окрас кошек и котов
+            <i class="reference-source">источник: <a target="_blank" href="https://ru.wikipedia.org">wikipedia</a></i>
+          </dt>
+          <dd>
+            <img src="img/article-1.jpg" alt="Окрас кошек и котов" width="100" height="100">
+            <p>Окрас шерсти, кожи и глаз кошки обусловлен присутствием в них пигмента меланина. Меланин находится в теле волоса в виде микроскопических гранул, которые различаются по форме, размеру и количеству, что и вызывает различия в окрасе.</p>
+          </dd>
+        </div>
+        <div class="theory-container">
+          <dt class="reference-title">
+            Кошкин дом
+            <i class="reference-source">источник: <a target="_blank" href="http://kotmur.spb.ru">kotmur.spb.ru</a></i>
+          </dt>
+          <dd>
+            <img src="img/article-2.jpg" alt="Кошкин дом" width="100" height="100">
+            <p>Нужен ли кошке Кошкин дом? Свой отдельный, обособленный от пространства городской квартиры Кошкин дом? Да, нужен! Нужен особый Кошкин дом, обустроенный по ее вкусу с лесенкой, с когтеточкой, с замкнутым, своим, отдельным уголком в ее, кошкином, доме.</p>
+          </dd>
+        </div>
+      </dl>
+    </div>
+  </div> -->
+
+
+  <div class="popular-and-price">
+    <div class="container">
+      <h2 class="section-title">Популярные товары</h2>
+      <!-- <a class="btn to-catalog" href="#" title="Посмотреть все товары">Каталог</a> -->
+      <div class="popular-items clearfix swiper">
+          <div class="swiper-wrapper">
+          {%for product in products%}
+          <div class="swiper-slide">
+            <div class="catalog-item">
+                <img src="{%static product.image%}" alt="{{product.name}}" width="306" height="306">
+                <h3>{{product.name}}</h3>
+                <b class="catalog-item-price">{{product.price}} р.</b>
+                <!-- <h3>Время выполнения:</h3>
+                <b class="catalog-item-price">{{product.time}} часов</b> -->
+                <!-- <a class="btn btn-info" href="#">Описание</a>
+                <a class="btn btn-buy" href="#">Купить</a> -->
+            </div>
+          </div>
+          {%endfor%}
+          </div>
+          <div class="swiper-button-prev"></div>
+          <div class="swiper-button-next"></div>
+      </div>
+      <script>
+        const swiper = new Swiper('.swiper', {
+        // Optional parameters
+        direction: 'horizontal',
+        loop: true,
+        slidesPerView: 3,
+        spaceBetween: 40,
+        autoplay: {
+            delay: 1000,
+          },
+        // Responsive breakpoints
+        breakpoints: {
+          // when window width is >= 320px
+          320: {
+            slidesPerView: 2,
+            spaceBetween: 20
+          },
+          // when window width is >= 480px
+          480: {
+            slidesPerView: 2,
+            spaceBetween: 30
+          },
+          // when window width is >= 640px
+          640: {
+            slidesPerView: 3,
+            spaceBetween: 40
+          }
+        },
+        // // If we need pagination
+        // pagination: {
+        //   el: '.swiper-pagination',
+        // },
+
+        // Navigation arrows
+        navigation: {
+          nextEl: '.swiper-button-next',
+          prevEl: '.swiper-button-prev',
+        },
+
+        // // And if we need scrollbar
+        // scrollbar: {
+        //   el: '.swiper-scrollbar',
+        // },
+      });
+      </script>
+      <h2 class="section-title">Прайс-лист на услуги</h2>
+      <table class="price-list">
+        <tr>
+          <th class="price-number">№</th>
+          <th>Название услуги</th>
+          <th>Кто оказывает</th>
+          <th>Сколько стоит</th>
+        </tr>
+        <tr>
+          <td class="price-number">1.</td>
+          <td class="price-name">Кастомизация одежды</td>
+          <td class="price-master">Дизайнер / Хyдожник</td>
+          <td class="price-cost">от 3500 руб.</td>
+        </tr>
+        <tr>
+          <td class="price-number">2.</td>
+          <td class="price-name">Рyчное вязание</td>
+          <td class="price-master">Портной</td>
+          <td class="price-cost">от 3000 руб.</td>
+        </tr>
+        <tr>
+          <td class="price-number">3.</td>
+          <td class="price-name">Изготовление домашних аксессуаров</td>
+          <td class="price-master">Дизайнер</td>
+          <td class="price-cost">от 2000 руб.</td>
+        </tr>
+        <!-- <tr>
+          <td class="price-number">4.</td>
+          <td class="price-name">Подбор аксессуаров</td>
+          <td class="price-master">Стилист</td>
+          <td class="price-cost">1500 руб.</td>
+        </tr> -->
+      </table>
+    </div>
+  </div>
+
+  <div class="reviews">
+    <div class="container">
+      <h2 class="section-title">Отзывы</h2>
+      <!-- <a class="btn to-all-reviews" href="#" title="Посмотреть все отзывы">Все отзывы</a> -->
+      <div class="reviews-list clearfix">
+        <blockquote class="review-item">
+          <p>Заказал кастомизацию фyтболки. Раньше пользовался сервисами печати, но решил попробовать новое. Пришлось немного подождать, но оно того стоило. Отличное качество, не трескается после стирки. Реалистичный рисyнок</p>
+          <cite class="review-author">Егор, г. Москва</cite>
+        </blockquote>
+        <blockquote class="review-item">
+          <p>Подарила своемy мyжy вязанный шарф, теперь не выходит на yлицy без него)</p>
+          <cite class="review-author">Оксана, г. Санкт-Петербург</cite>
+        </blockquote>
+      </div>
+    </div>
+  </div>
+
+  {%include 'web/includes/form.html'%}
+{%endblock%}

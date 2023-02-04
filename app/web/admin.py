@@ -6,11 +6,11 @@ from .models import *
 # Register your models here.
 @admin.register(Order)
 class OrderAdmin(admin.ModelAdmin):
-    list_display=['username','email','phone']
+    list_display=['name','email','phone']
 
 @admin.register(Product)
 class ProductAdmin(admin.ModelAdmin):
-    list_display=['name','price']
+    list_display=['name','price_start']
 
 @admin.register(ProductInOrder)
 class ProductInOrderAdmin(admin.ModelAdmin):

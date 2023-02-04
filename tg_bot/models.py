@@ -15,14 +15,16 @@ class Product(Base):
     __tablename__ = "web_product"
     id = Column(Integer, primary_key=True)
     name = Column(String(120))
-    price = Column(Integer)
+    price_start = Column(Integer)
+    price_end = Column(Integer)
     time = Column(Integer)
+    img = Column(String(150))
     image = Column(String(150))
 
 class Order(Base):
     __tablename__ = "web_order"
     id = Column(Integer, primary_key=True)
-    username = Column(String(64), index=True)
+    name = Column(String(64), index=True)
     email = Column(String(120), index=True)
     phone = Column(String(15))
     content = Column(String(1000), nullable=False)
