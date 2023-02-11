@@ -56,23 +56,47 @@
       <h2 class="section-title">Популярные товары</h2>
       <!-- <a class="btn to-catalog" href="#" title="Посмотреть все товары">Каталог</a> -->
       <div class="popular-items clearfix swiper">
+        
           <div class="swiper-wrapper">
-          {%for product in products%}
-          <div class="swiper-slide">
-            <div class="catalog-item">
-                <img src="{{product.img.url}}" alt="{{product.name}}" width="306" height="306">
-                <h3>{{product.name}}</h3>
-                <b class="catalog-item-price">{{product.price_start}} р.</b>
-                <!-- <h3>Время выполнения:</h3>
-                <b class="catalog-item-price">{{product.time}} часов</b> -->
-                <!-- <a class="btn btn-info" href="#">Описание</a>
-                <a class="btn btn-buy" href="#">Купить</a> -->
+            {%for product in products%}
+              <div class="swiper-slide">
+                <div class="card">
+                  <!-- Верхняя часть -->
+                  <div class="card__top">
+                    <!-- Изображение-ссылка товара -->
+                    <div href="#" class="card__image">
+                      <img
+                        src="{{product.img.url}}"
+                        alt="{{product.name}}"
+                      />
+                    </div>
+                    <!-- Скидка на товар -->
+                    <div class="card__label">-10%</div>
+                  </div>
+                  <!-- Нижняя часть -->
+                  <div class="card__bottom">
+                    <!-- Цены на товар (с учетом скидки и без)-->
+                    <div class="card__prices">
+                      <div class="card__price">Цена: {{product.price_start}}</div>
+                      {% comment %} <div class="card__price card__price--common">{{product.price_end}}</div> {% endcomment %}
+                    </div>
+                    <!-- Ссылка-название товара -->
+                    {% comment %} <a href="#" class="card__title">
+                      {{product.name}}
+                    </a> {% endcomment %}
+                    <div href="#" class="card__title">
+                      {{product.name}}
+                    </div>
+                    <!-- Кнопка добавить в корзину -->
+                    {% comment %} <button class="card__add">В корзину</button> {% endcomment %}
+                  </div>
+                </div>
             </div>
-          </div>
           {%endfor%}
           </div>
-          <div class="swiper-button-prev"></div>
-          <div class="swiper-button-next"></div>
+        
+        <div class="swiper-button-prev"></div>
+        <div class="swiper-button-next"></div>
       </div>
       <script>
         const swiper = new Swiper('.swiper', {
@@ -82,7 +106,7 @@
         slidesPerView: 3,
         spaceBetween: 40,
         autoplay: {
-            delay: 1000,
+            delay: 3000,
           },
         // Responsive breakpoints
         breakpoints: {
