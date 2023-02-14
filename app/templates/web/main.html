@@ -28,22 +28,22 @@
       <dl>
         <div class="theory-container">
           <dt class="reference-title">
-            Окрас кошек и котов
+            
             <i class="reference-source">источник: <a target="_blank" href="https://ru.wikipedia.org">wikipedia</a></i>
           </dt>
           <dd>
-            <img src="img/article-1.jpg" alt="Окрас кошек и котов" width="100" height="100">
-            <p>Окрас шерсти, кожи и глаз кошки обусловлен присутствием в них пигмента меланина. Меланин находится в теле волоса в виде микроскопических гранул, которые различаются по форме, размеру и количеству, что и вызывает различия в окрасе.</p>
+            <img src="img/article-1.jpg" alt="" width="100" height="100">
+            <p>О</p>
           </dd>
         </div>
         <div class="theory-container">
           <dt class="reference-title">
-            Кошкин дом
-            <i class="reference-source">источник: <a target="_blank" href="http://kotmur.spb.ru">kotmur.spb.ru</a></i>
+            
+            <i class="reference-source">источник: <a target="_blank" href=""></a></i>
           </dt>
           <dd>
-            <img src="img/article-2.jpg" alt="Кошкин дом" width="100" height="100">
-            <p>Нужен ли кошке Кошкин дом? Свой отдельный, обособленный от пространства городской квартиры Кошкин дом? Да, нужен! Нужен особый Кошкин дом, обустроенный по ее вкусу с лесенкой, с когтеточкой, с замкнутым, своим, отдельным уголком в ее, кошкином, доме.</p>
+            <img src="img/article-2.jpg" alt="" width="100" height="100">
+            <p></p>
           </dd>
         </div>
       </dl>
@@ -51,7 +51,7 @@
   </div> -->
 
 
-  <div class="popular-and-price">
+  <div class="popular-and-price" id="products">
     <div class="container">
       <h2 class="section-title">Популярные товары</h2>
       <!-- <a class="btn to-catalog" href="#" title="Посмотреть все товары">Каталог</a> -->
@@ -65,10 +65,12 @@
                   <div class="card__top">
                     <!-- Изображение-ссылка товара -->
                     <div href="#" class="card__image">
+                      <a class="image-link" href="{{product.img.url}}" data-lightbox="example-2">
                       <img
                         src="{{product.img.url}}"
                         alt="{{product.name}}"
                       />
+                      </a>
                     </div>
                     <!-- Скидка на товар -->
                     <div class="card__label">-10%</div>
@@ -98,6 +100,13 @@
         <div class="swiper-button-prev"></div>
         <div class="swiper-button-next"></div>
       </div>
+      <script>
+        lightbox.option({
+          'resizeDuration': 200,
+          'wrapAround': true,
+          'fadeDuration': 200
+        })
+      </script>
       <script>
         const swiper = new Swiper('.swiper', {
         // Optional parameters
@@ -143,7 +152,7 @@
         // },
       });
       </script>
-      <h2 class="section-title">Прайс-лист на услуги</h2>
+      {% comment %} <h2 class="section-title">Прайс-лист на услуги</h2>
       <table class="price-list">
         <tr>
           <th class="price-number">№</th>
@@ -175,26 +184,25 @@
           <td class="price-master">Стилист</td>
           <td class="price-cost">1500 руб.</td>
         </tr> -->
-      </table>
+      </table> {% endcomment %}
     </div>
   </div>
 
-  <div class="reviews">
-    <div class="container">
-      <h2 class="section-title">Отзывы</h2>
-      <!-- <a class="btn to-all-reviews" href="#" title="Посмотреть все отзывы">Все отзывы</a> -->
-      <div class="reviews-list clearfix">
-        <blockquote class="review-item">
-          <p>Заказал кастомизацию фyтболки. Раньше пользовался сервисами печати, но решил попробовать новое. Пришлось немного подождать, но оно того стоило. Отличное качество, не трескается после стирки. Реалистичный рисyнок</p>
-          <cite class="review-author">Егор, г. Москва</cite>
-        </blockquote>
-        <blockquote class="review-item">
-          <p>Подарила своемy мyжy вязанный шарф, теперь не выходит на yлицy без него)</p>
-          <cite class="review-author">Оксана, г. Санкт-Петербург</cite>
-        </blockquote>
+    {%include 'web/includes/form.html'%}
+    <div class="reviews" id="reviews">
+      <div class="container">
+        <h2 class="section-title">Отзывы</h2>
+        <!-- <a class="btn to-all-reviews" href="#" title="Посмотреть все отзывы">Все отзывы</a> -->
+        <div class="reviews-list clearfix">
+          <blockquote class="review-item">
+            <p>Заказал кастомизацию фyтболки. Раньше пользовался сервисами печати, но решил попробовать новое. Пришлось немного подождать, но оно того стоило. Отличное качество, не трескается после стирки. Реалистичный рисyнок</p>
+            <cite class="review-author">Егор, г. Москва</cite>
+          </blockquote>
+          <blockquote class="review-item">
+            <p>Подарила своемy мyжy вязанный шарф, теперь не выходит на yлицy без него)</p>
+            <cite class="review-author">Оксана, г. Санкт-Петербург</cite>
+          </blockquote>
+        </div>
       </div>
     </div>
-  </div>
-
-  {%include 'web/includes/form.html'%}
 {%endblock%}

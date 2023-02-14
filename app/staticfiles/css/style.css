@@ -38,7 +38,7 @@ body {
 .page-header,
 .page-footer {
   color: #c3c3c3;
-  background-color: #FF7400;
+  background-color: #d16001;
 }
 
 .header-top {
@@ -142,7 +142,7 @@ body {
 }
 
 .promo a {
-  color: #283618;
+  color: #363638;
   text-decoration: none;
 }
 
@@ -773,7 +773,7 @@ body {
   height: 100%;
 }
 
-.card__image > img {
+.card__image a > img {
   width: 100%;
   height: 100%;
   object-fit: contain; /* Встраиваем картинку в контейнер card__image */
@@ -781,7 +781,7 @@ body {
 }
 
 /* При наведении - увеличиваем картинку */
-.card__image:hover > img {
+.card__image:hover a > img {
   transform: scale(1.1);
 }
 
