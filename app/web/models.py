@@ -12,8 +12,8 @@ class Product(models.Model):
 
 class Order(models.Model):
     name = models.CharField(max_length=64, db_index=True)
-    email = models.CharField(max_length=120, db_index=True)
-    phone = models.CharField(max_length=15)
+    email = models.CharField(max_length=120, db_index=True, blank=True, default='example@ex.com')
+    phone = models.CharField(max_length=15, blank=True,default="8(999)9999999")
     content = models.TextField(null=True, blank=True)
     created_on = models.DateTimeField(default=datetime.datetime.now)
     is_confirm = models.BooleanField(default=False)

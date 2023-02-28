@@ -3,7 +3,7 @@
         <h2 class="section-title">Оставить заявку:</h2>
         <p class="feedback-tip">Свяжитесь с нами и мы развеем оставшиеся у вас сомнения!</p>
 
-        <form class="feedback-form" action="{%url 'main'%}" method="post">
+        <form class="feedback-form" action="{%url 'main'%}" method="post" id="orderForm">
         {%csrf_token%}
         <div class="feedback-form-group">
             <label for="fullname">Представьтесь, пожалуйста:</label>
@@ -19,20 +19,6 @@
             <input type="text" name="email" id="email">
             </div>
         </div>
-        {% comment %} <div class="checkbox-area">
-            <label>
-            <input type="checkbox" name="subscription">
-            Я согласен получать новости и оповещения о скидках
-            </label>
-        </div> {% endcomment %}
-        <!-- <div class="feedback-form-group">
-            <label for="topic">Тема обращения:</label>
-            <select name="topic" id="topic">
-            <option value="1">Условия доставки</option>
-            <option value="2">Возврат товара</option>
-            <option value="3">Жалоба в Роспотребнадзор</option>
-            </select>
-        </div> -->
         <div class="feedback-form-group">
             <label for="message">Текст обращения:</label>
             <textarea name="content" id="message"></textarea>
@@ -40,9 +26,105 @@
         <input class="btn" type="submit" value="Отправить">
         </form>
         <script>
+            function getFormData($form){
+                var unindexed_array = $form.serializeArray();
+                var indexed_array = {};
+                $.map(unindexed_array, function(n, i){
+                    indexed_array[n['name']] = n['value'];
+                });
+                return indexed_array;
+            }
+            
             $(function() {
               //задание заполнителя с помощью параметра placeholder
               $("#phone").mask("+7(999)999-9999", {placeholder: "+7(___)___-____" });
+            });
+            $.validator.setDefaults( {
+                submitHandler: function () {
+                    var $crf_token = $('[name="csrfmiddlewaretoken"]').attr('value');
+                    var $form = $("form");
+                    var data = getFormData($form);
+                    $.ajax({
+                        url: '/',
+                        type: 'post',
+                        cache: true,
+                        data: data,
+                        success: function(responce){
+                            $(':input','#form')
+                            .not(':button, :submit, :reset, :hidden')
+                            .val('')
+                            .prop('checked', false)
+                            .prop('selected', false);
+                        }
+                    });
+                    
+                    var modal = $('.js-modal');
+                    
+                    modal.addClass('is-show');
+                    $('.js-modal-overlay').addClass('is-show');
+                }
+            } );
+    
+            $(document).ready( function () {
+                $(':input','#form')
+                .not(':button, :submit, :reset, :hidden')
+                .val('')
+                .prop('checked', false)
+                .prop('selected', false);
+                $("#orderForm").validate( {
+                    rules: {
+                        name: {
+                            required: true,
+                            minlength: 2
+                        },
+                        email: {
+                            required: true,
+                            email: true
+                        },
+                    },
+                    messages: {
+                        name: {
+                            required: "Пожалуйста введите ваше имя",
+                            minlength: "Ваше имя должно состоять как минимум из 2 символов"
+                        },
+                        email: "Введите корректный адрес электронной почты",
+                    },
+                    errorElement: "em",
+                    errorPlacement: function ( error, element ) {
+                        // Add the `help-block` class to the error element
+                        error.addClass( "help-block" );
+    
+                        if ( element.prop( "type" ) === "checkbox" ) {
+                            error.insertAfter( element.parent( "label" ) );
+                        } else {
+                            error.insertAfter( element );
+                        }
+                    },
+                    success: function ( label, element ) {
+                        // Add the span element, if doesn't exists, and apply the icon classes to it.
+                        if ( !$( element ).next( "span" )[ 0 ] ) {
+                            $( "<span class='glyphicon glyphicon-ok form-control-feedback'></span>" ).insertAfter( $( element ) );
+                        }
+                        
+                    },
+                    highlight: function ( element, errorClass, validClass ) {
+                        $( element ).parents( ".col-sm-5" ).addClass( "has-error" ).removeClass( "has-success" );
+                    },
+                    unhighlight: function (element, errorClass, validClass) {
+                        $( element ).parents( ".col-sm-5" ).addClass( "has-success" ).removeClass( "has-error" );
+                    }
+                } );
+                
+                 
+                 $('.js-modal-close').click(function() {
+                    $(this).parent('.js-modal').removeClass('is-show');
+                    $('.js-modal-overlay').removeClass('is-show');
+                 });
+                    
+                 $('.js-modal-overlay').click(function() {
+                    $('.js-modal.is-show').removeClass('is-show');
+                    $(this).removeClass('is-show');
+                 })
             });
         </script>
     </div>

@@ -205,4 +205,34 @@
         </div>
       </div>
     </div>
+    <div class="container" id="photos">
+      <h2 class="section-title">Галерея</h2>
+      <div class="gallery">
+      {%for product in products%}
+      <div class="photo__gallery">
+        <a class="image-link" href="{{product.img.url}}" data-lightbox="example-1">
+          <img
+            src="{{product.img.url}}"
+            alt="{{product.name}}"
+            height="350px"
+          />
+      </a>
+      
+      </div>
+      
+      {%endfor%}
+    </div>
+      <style>
+        .photo__gallery{
+          margin: 20px;
+          object-fit: contain;
+        }
+        .gallery{
+          display:flex;
+          flex-wrap: wrap;
+          flex-direction: row;
+          width: 100%;
+        }
+      </style>
+    </div>
 {%endblock%}
