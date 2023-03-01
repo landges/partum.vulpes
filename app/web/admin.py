@@ -15,3 +15,7 @@ class ProductAdmin(admin.ModelAdmin):
 @admin.register(ProductInOrder)
 class ProductInOrderAdmin(admin.ModelAdmin):
     list_display=['order_id','product_id']
+
+@admin.register(Gallery)
+class GalleryAdmin(admin.ModelAdmin):
+    list_display=['id','is_show']

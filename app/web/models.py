@@ -8,7 +8,7 @@ class Product(models.Model):
     price_end = models.IntegerField()
     time = models.IntegerField()
     img = models.ImageField(upload_to='products')
-    image = models.CharField(max_length=300)
+    is_show = models.BooleanField(default=False)
 
 class Order(models.Model):
     name = models.CharField(max_length=64, db_index=True)
@@ -22,3 +22,9 @@ class Order(models.Model):
 class ProductInOrder(models.Model):
     order_id = models.ForeignKey(Order, related_name='order', on_delete=models.CASCADE)
     product_id = models.ForeignKey(Product, related_name='product', on_delete=models.CASCADE)
+
+
+class Gallery(models.Model):
+    img = models.ImageField(upload_to='products')
+    is_show = models.BooleanField(default=False)
+    product = models.ForeignKey(Product, related_name="p2p", on_delete=models.CASCADE, blank=True, default=None)
