@@ -19,3 +19,8 @@ class MainView(View):
         if form.is_valid():
             form.save()
         return redirect("main")
+    
+
+class PaymentView(View):
+    def get(self, request):
+        return render(request,'web/payment.html')

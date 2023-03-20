@@ -23,4 +23,14 @@ nav a {
 nav a.router-link-exact-active {
   color: #42b983;
 }
+.section-title {
+  margin: 0;
+  margin-right: 180px;
+  margin-bottom: 60px;
+  font-weight: bold;
+  font-size: 45px;
+  line-height: 55px;
+  font-family: "Mulish-VariableFont_wght", serif;
+  color: #AD7A50;
+}
 </style>

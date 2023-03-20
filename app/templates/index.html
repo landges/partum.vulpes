@@ -35,7 +35,8 @@
       ym(92253944, "init", {
           clickmap:true,
           trackLinks:true,
-          accurateTrackBounce:true
+          accurateTrackBounce:true,
+          webvisor:true
       });
     </script>
     <noscript><div><img src="https://mc.yandex.ru/watch/92253944" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
@@ -47,11 +48,12 @@
             <img src="{% static 'img/logo.svg'%}" alt="Logo" width="205" height="55">
           </div>
           <ul class="main-nav clearfix">
-            <li><a href="#products"><b>Каталог</b></a></li>
+            <li><a href="/#products"><b>Каталог</b></a></li>
             
-            <li><a href="#reviews"><b>Отзывы</b></a></li>
+            <li><a href="/#reviews"><b>Отзывы</b></a></li>
             
-            <li><a href="#form"><b>Заказать</b></a></li>
+            <li><a href="/#form"><b>Заказать</b></a></li>
+            <li><a href="{%url 'payment'%}"><b>Доставка и оплата</b></a></li>
           </ul>
           <!-- <a class="btn btn-quick-order" href="#">Заказать</a> -->
         </div>
