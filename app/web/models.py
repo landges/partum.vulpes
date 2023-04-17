@@ -8,6 +8,7 @@ class Product(models.Model):
     price_end = models.IntegerField()
     time = models.IntegerField()
     img = models.ImageField(upload_to='products')
+    dsc = models.TextField(null=True, blank=True, default=None)
     is_show = models.BooleanField(default=False)
 
 class Order(models.Model):
