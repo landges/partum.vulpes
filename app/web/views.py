@@ -10,9 +10,11 @@ class MainView(View):
         form=OrderForm()
         products=Product.objects.all()
         photos = Gallery.objects.filter(is_show=True)
+        questions = Question.objects.all()
         return render(request, 'web/main_new.html', context={"form":form,
                                                       "products":products,
-                                                      "photos":photos})
+                                                      "photos":photos,
+                                                      "faq":questions})
 
     def post(self,request):
         form = OrderForm(request.POST)

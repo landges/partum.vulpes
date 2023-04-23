@@ -11,6 +11,9 @@ class Product(models.Model):
     dsc = models.TextField(null=True, blank=True, default=None)
     is_show = models.BooleanField(default=False)
 
+    def __str__(self):
+        return self.name
+
 class Order(models.Model):
     name = models.CharField(max_length=64, db_index=True)
     email = models.CharField(max_length=120, db_index=True, blank=True, default='example@ex.com')
@@ -29,3 +32,17 @@ class Gallery(models.Model):
     img = models.ImageField(upload_to='products')
     is_show = models.BooleanField(default=False)
     product = models.ForeignKey(Product, related_name="p2p", on_delete=models.CASCADE, blank=True, default=None)
+
+
+class Question(models.Model):
+    title = models.CharField(max_length=1000, default="Title")
+    answer = models.TextField(default="")
+    
+
+    class Meta:
+        verbose_name = ("Вопрос")
+        verbose_name_plural = ("Вопросы")
+
+    def __str__(self):
+        return self.title
+
