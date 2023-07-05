@@ -14,31 +14,31 @@
         <form id="contactForm" action="{%url 'main'%}" method="post">
             {%csrf_token%}
             <div class="row align-items-stretch mb-5">
-                <div class="col-md-6">
-                    <div class="form-group">
+                <div class="col-md-6" style="margin:auto;">
+                    <div class="form-group text-center">
                         <!-- Name input-->
                         <input class="form-control" id="name" name="name" type="text" placeholder="Ваше Имя *" data-sb-validations="required" />
                         <div class="invalid-feedback" data-sb-feedback="name:required">A name is required.</div>
                     </div>
-                    <div class="form-group">
+                    {% comment %} <div class="form-group">
                         <!-- Email address input-->
                         <input class="form-control" id="email" name="email" type="email" placeholder="Email *" data-sb-validations="required,email" />
                         <div class="invalid-feedback" data-sb-feedback="email:required">An email is required.</div>
                         <div class="invalid-feedback" data-sb-feedback="email:email">Email is not valid.</div>
-                    </div>
-                    <div class="form-group mb-md-0">
+                    </div> {% endcomment %}
+                    <div class="form-group mb-md-0 text-center">
                         <!-- Phone number input-->
                         <input class="form-control" id="phone" name="phone" type="tel" placeholder="Ваш номер телефона *" data-sb-validations="required" />
                         <div class="invalid-feedback" data-sb-feedback="phone:required">A phone number is required.</div>
                     </div>
                 </div>
-                <div class="col-md-6">
+                {% comment %} <div class="col-md-6">
                     <div class="form-group form-group-textarea mb-md-0">
                         <!-- Message input-->
                         <textarea class="form-control" id="message" name="content" placeholder="Ваши пожелания *" data-sb-validations="required"></textarea>
                         <div class="invalid-feedback" data-sb-feedback="message:required">A message is required.</div>
                     </div>
-                </div>
+                </div> {% endcomment %}
             </div>
             <!-- Submit success message-->
             <!---->

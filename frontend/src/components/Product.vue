@@ -1,189 +1,22 @@
 <template>
-    <div class="card">
-        <!-- Верхняя часть -->
-        <div class="card__top">
-        <!-- Изображение-ссылка товара -->
-        <div href="#" class="card__image">
-            <a class="image-link" href="{{product.img.url}}" data-lightbox="example-2">
-            <img
-            src="{{product.img.url}}"
-            alt="{{product.name}}"
-            />
-            </a>
-        </div>
-        <!-- Скидка на товар -->
-        <div class="card__label">-10%</div>
-        </div>
-        <!-- Нижняя часть -->
-        <div class="card__bottom">
-        <!-- Цены на товар (с учетом скидки и без)-->
-        <div class="card__prices">
-            <div class="card__price">Цена: {{product.price_start}}</div>
-        </div>
-        <!-- Ссылка-название товара -->
-        <a href="#" class="card__title">
-            {{product.name}}
-        </a> 
-        <div href="#" class="card__title">
-            {{product.name}}
-        </div>
-        <!-- Кнопка добавить в корзину -->
-         <button class="card__add">В корзину</button> 
+    <div class="col-lg-4 col-sm-6 mb-4">
+    <!-- Portfolio item 1-->
+    <div class="portfolio-item">
+        <a class="portfolio-link" data-bs-toggle="modal" href="#portfolioModal{{forloop.counter}}">
+            <div class="portfolio-hover">
+                <div class="portfolio-hover-content"><i class="fas fa-plus fa-3x"></i></div>
+            </div>
+            <img class="img-fluid" src="{{product.img.url}}" alt="..." />
+        </a>
+        <div class="portfolio-caption">
+            <div class="portfolio-caption-heading">{{product.name}}</div>
+            <div class="portfolio-caption-subheading text-muted">{{product.price_start}} Р.</div>
         </div>
     </div>
+</div>
 </template>
 <script>
 export default {
     name: "product"
 }
 </script>
-<style scoped>
-.card {
-  width: 285px;
-  min-height: 350px;
-  box-shadow: 1px 2px 4px rgba(0, 0, 0, 0.1);
-  display: flex;
-  flex-direction: column; /* Размещаем элементы в колонку */
-  border-radius: 4px;
-  transition: 0.2s;
-  position: relative;
-}
-
-/* При наведении на карточку - меняем цвет тени */
-.card:hover {
-  box-shadow: 4px 8px 16px rgba(255, 102, 51, 0.2);
-}
-
-.card__top {
-  flex: 0 0 220px; /* Задаем высоту 220px, запрещаем расширение и сужение по высоте */
-  position: relative;
-  overflow: hidden; /* Скрываем, что выходит за пределы */
-}
-
-/* Контейнер для картинки */
-.card__image {
-  display: block;
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-}
-
-.card__image a > img {
-  width: 100%;
-  height: 100%;
-  object-fit: contain; /* Встраиваем картинку в контейнер card__image */
-  transition: 0.2s;
-}
-
-/* При наведении - увеличиваем картинку */
-.card__image:hover a > img {
-  transform: scale(1.1);
-}
-
-/* Размещаем скидку на товар относительно изображения */
-.card__label {
-  padding: 4px 8px;
-  position: absolute;
-  bottom: 10px;
-  left: 10px;
-  background: #ff6633;
-  border-radius: 4px;
-  font-weight: 400;
-  font-size: 16px;
-  color: #fff;
-}
-
-.card__bottom {
-  display: flex;
-  flex-direction: column;
-  flex: 1 0 auto; /* Занимаем всю оставшуюся высоту карточки */
-  padding: 10px;
-}
-
-.card__prices {
-  display: flex;
-  margin-bottom: 10px;
-  flex: 0 0 50%; /* Размещаем цены равномерно в две колонки */
-}
-
-.card__price::after {
-  content: "₽";
-  margin-left: 4px;
-  position: relative;
-}
-
-.card__price--discount {
-  font-weight: 700;
-  font-size: 19px;
-  color: #414141;
-  display: flex;
-  flex-wrap: wrap-reverse;
-}
-
-.card__price--discount::before {
-  content: "Со скидкой";
-  font-weight: 400;
-  font-size: 13px;
-  color: #bfbfbf;
-}
-
-.card__price--common {
-  font-weight: 400;
-  font-size: 17px;
-  color: #606060;
-  display: flex;
-  flex-wrap: wrap-reverse;
-  justify-content: flex-end;
-}
-
-.card__price--common::before {
-  content: "Обычная";
-  font-weight: 400;
-  font-size: 13px;
-  color: #bfbfbf;
-}
-
-.card__title {
-  display: block;
-  margin-bottom: 10px;
-  font-weight: 400;
-  font-size: 17px;
-  line-height: 150%;
-  color: #414141;
-}
-
-.card__title:hover {
-  color: #ff6633;
-}
-
-.card__add {
-  display: block;
-  width: 100%;
-  font-weight: 400;
-  font-size: 17px;
-  color: #70c05b;
-  padding: 10px;
-  text-align: center;
-  border: 1px solid #70c05b;
-  border-radius: 4px;
-  cursor: pointer; /* Меняем курсор при наведении */
-  transition: 0.2s;
-  margin-top: auto; /* Прижимаем кнопку к низу карточки */
-}
-
-.card__add:hover {
-  border: 1px solid #f55824;
-  background-color: #ff6633;
-  color: #fff;
-}
-.link {
-  padding: 10px 20px;
-  display: inline-block;
-  background-color: #444;
-  color: #fff;
-  border-radius: 3px;
-  text-decoration: none;
-}
-</style>
