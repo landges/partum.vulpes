@@ -11,13 +11,13 @@
                     
                     <div class="accordion-item" v-for="quenstion in faq">
                         <h4 class="accordion-header" id="heading">
-                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse{{forloop.counter}}" aria-expanded="false" aria-controls="collapse{{forloop.counter}}">
-                                {{quenstion.title|safe}}
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse{{quenstion.id}}" aria-expanded="false" aria-controls="collapse{{quenstion.id}}">
+                                {{quenstion.title}}
                             </button>
                         </h4>
-                        <div id="collapse{{forloop.counter}}" class="accordion-collapse collapse" aria-labelledby="heading{{forloop.counter}}" data-bs-parent="#accordionExample" style="">
+                        <div id="collapse{{quenstion.id}}" class="accordion-collapse collapse" aria-labelledby="heading{{quenstion.id}}" data-bs-parent="#accordionExample">
                             <div class="accordion-body">
-                                {{quenstion.answer|safe}}
+                                {{quenstion.answer}}
                             </div>
                         </div>
                     </div>
@@ -33,9 +33,21 @@ export default{
         return {
             faq:[
                 {
+                    "id":1,
                     "title":"h1",
                     "answer":'a1'
+                },
+                {
+                    "id":2,
+                    "title":"h3",
+                    "answer":'a3'
+                },
+                {
+                    "id":3,
+                    "title":"h4",
+                    "answer":'a5'
                 }
+
             ],
         }
     },

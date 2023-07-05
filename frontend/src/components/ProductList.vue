@@ -10,6 +10,7 @@
                 v-for="product in products"
                 :product="product"
                 :key="product.id"
+                
                 />
             </div>
         </div>
@@ -23,7 +24,7 @@ export default {
     },
     props:{
         products:{
-            type: Array,
+            type: [],
             required: true,
         }
     }

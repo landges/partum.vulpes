@@ -6,7 +6,7 @@ from apps.upload.views import image_upload
 
 urlpatterns = [
     # path("", image_upload, name="upload"),
-    path('', include("web.urls")),
+    path('', include("apps.web.urls")),
     path("admin/", admin.site.urls),
     path('ckeditor/', include('ckeditor_uploader.urls')),
 ]

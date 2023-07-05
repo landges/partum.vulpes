@@ -5,8 +5,10 @@ __pycache
 .env.prod
 .env.prod.db
 .env.dev-sample
-app/staticfiles/admin
-app/static/admin
+backend/staticfiles/admin
+backend/staticfiles/ckeditor
+backend/staticfiles/rest_framework
+backend/static/admin
 venv/
 tg_bot/prod.env
 app/prod.env
