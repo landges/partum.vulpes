@@ -11,7 +11,7 @@
                 <div class="col-md-6" style="margin:auto;">
                     <div class="form-group text-center">
                         <!-- Name input-->
-                        <input class="form-control" id="name" name="name" type="text" placeholder="Ваше Имя *" data-sb-validations="required" :value="order.name"/>
+                        <my-input id="name" name="name" type="text" placeholder="Ваше Имя *" data-sb-validations="required" v-model="order.name"/>
                         <div class="invalid-feedback" data-sb-feedback="name:required">A name is required.</div>
                     </div>
                     <div class="form-group">
@@ -22,7 +22,7 @@
                     </div> 
                     <div class="form-group mb-md-0 text-center">
                         <!-- Phone number input-->
-                        <input class="form-control" id="phone" name="phone" type="tel" placeholder="Ваш номер телефона *" data-sb-validations="required" :value="order.phone"/>
+                        <my-input id="phone" name="phone" type="tel" placeholder="Ваш номер телефона *" data-sb-validations="required" v-model="order.phone"/>
                         <div class="invalid-feedback" data-sb-feedback="phone:required">A phone number is required.</div>
                     </div>
                 </div>

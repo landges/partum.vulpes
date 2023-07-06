@@ -48,7 +48,7 @@ export default{
                     img:"ncskncks",
                 },
             ],
-            confirmOrderVisible: false,
+            confirmOrderVisible: true,
             orders:[]
         }
     },
