@@ -7,7 +7,7 @@
         <Faq></Faq>
         <FormOrder
         @create="createOrder"/>
-        <Gallery></Gallery>
+        <Gallery :photos="photos"></Gallery>
         <Footer></Footer>
         
     </div>
@@ -24,7 +24,7 @@ import Gallery from "@/components/Gallery.vue"
 import ProductList from "@/components/ProductList.vue"
 import Footer from "@/components/Footer.vue"
 import confirmModal from "@/components/confirmModal.vue"
-// import axios from 'axios'
+import axios from 'axios'
 
 export default{
     components:{
@@ -32,23 +32,9 @@ export default{
     },
     data(){
         return {
-            products:[
-                {
-                    id:1,
-                    name:"t-shirt with anime custom",
-                    price_start:2000,
-                    dsc:"blabla",
-                    img:"ncskncks",
-                },
-                {
-                    id:2,
-                    name:"t-shirt with anime custom",
-                    price_start:2000,
-                    dsc:"blabla",
-                    img:"ncskncks",
-                },
-            ],
-            confirmOrderVisible: true,
+            isProductsLoading: false,
+            products:[],
+            confirmOrderVisible: false,
             orders:[]
         }
     },
@@ -56,8 +42,55 @@ export default{
         createOrder(order){
             this.orders.push(order);
             this.confirmOrderVisible = true;
-            console.log(this.orders);
-        }
-    }
+            this.PostOrder(order);
+            console.log(this.confirmOrderVisible);
+        },
+        async fetchProducts(){
+            try{
+                this.isPostLoading =true;
+                const response = await axios.get('http://127.0.0.1:8000/api/get/products',{
+                    params:{
+                        page: this.page,
+                        limit:this.limit,
+                    }
+                });
+                // this.totalPage = 10;
+                this.products = response.data;
+            }
+            catch(e){
+                alert("Error");
+            }
+            finally{
+                this.isPostLoading = false;
+            }
+        },
+        async fetchGallery(){
+            try{
+                this.isPostLoading =true;
+                const response = await axios.get('http://127.0.0.1:8000/api/get/gallery',{
+                    params:{
+                        page: this.page,
+                        limit:this.limit,
+                    }
+                });
+                // this.totalPage = 10;
+                this.photos = response.data;
+            }
+            catch(e){
+                alert("Error");
+            }
+            finally{
+                this.isPostLoading = false;
+            }
+        },
+        async PostOrder(order){
+            const response = await axios.post('http://127.0.0.1:8000/api/post/order/create', order)
+            console.log(response);
+        },
+    },
+    mounted(){
+        this.fetchProducts();
+        this.fetchGallery();
+    },
 }
 </script>

@@ -1,6 +1,5 @@
 <template>
     <!-- Portfolio item 1 modal popup-->
-{%load static%}
 <div class="portfolio-modal modal fade" id="portfolioModal{{forloop.counter}}" tabindex="-1" role="dialog" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
@@ -12,10 +11,10 @@
                             <!-- Project details-->
                             <h2 class="text-uppercase">{{product.name}}</h2>
                             <p class="item-intro text-muted">.</p>
-                            <img class="img-fluid d-block mx-auto" src="{{product.img.url}}" alt="..." />
-                            {%if product.dsc%}
-                            <p>{{product.dsc|safe}}</p>
-                            {%endif%}
+                            <img class="img-fluid d-block mx-auto" :src="product.img_url" alt="..." />
+                            
+                            <p v-if="product.dsc">{{product.dsc}}</p>
+                            
                             <ul class="list-inline">
                                 <li>
                                     <strong>Цена:</strong>
@@ -37,6 +36,8 @@
 
 </template>
 <script>
+import axios from 'axios'
+
 export default{
     
 }

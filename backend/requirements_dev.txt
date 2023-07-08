@@ -5,3 +5,4 @@ Pillow
 django-ckeditor==6.5.1
 djangorestframework
 django-cors-headers
+drf-spectacular
