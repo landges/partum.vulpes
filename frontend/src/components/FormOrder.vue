@@ -13,6 +13,7 @@
                         <!-- Name input-->
                         <my-input id="name" name="name" type="text" placeholder="Ваше Имя *" data-sb-validations="required" v-model="order.name"/>
                         <div class="invalid-feedback" data-sb-feedback="name:required">A name is required.</div>
+                        {{v$.order.name.error}}
                     </div>
                     <div class="form-group">
                         <!-- Email address input-->
@@ -22,7 +23,8 @@
                     </div> 
                     <div class="form-group mb-md-0 text-center">
                         <!-- Phone number input-->
-                        <my-input id="phone" name="phone" type="tel" placeholder="Ваш номер телефона *" data-sb-validations="required" v-model="order.phone"/>
+                        <my-input id="phone" name="phone" v-mask="'####-##'" type="tel" placeholder="Ваш номер телефона *" data-sb-validations="required" 
+                        v-model="order.phone"/>
                         <div class="invalid-feedback" data-sb-feedback="phone:required">A phone number is required.</div>
                     </div>
                 </div>
@@ -34,12 +36,6 @@
                     </div>
                 </div> 
             </div>
-            <!-- Submit success message-->
-            <!---->
-            <!-- This is what your users will see when the form-->
-            <!-- has successfully submitted-->
-            
-            <!-- Submit Button-->
             <div class="text-center">
                 <button class="btn btn-primary btn-xl text-uppercase" id="submitButton" type="submit" @click="createOrder">
                     Отправить
@@ -50,7 +46,13 @@
 </section>
 </template>
 <script>
+import  {useVuelidate} from '@vuelidate/core'
+import { required, email } from '@vuelidate/validators'
+
 export default {
+    setup () {
+        return { v$: useVuelidate() }
+    },
     data(){
         return {
             order:{
@@ -59,14 +61,31 @@ export default {
             }
         }
     },
+    validations () {
+        return {
+            order:{
+                name: { required }, // Matches this.firstName
+                phone: { required }, // Matches this.lastName
+                email: { required, email } // Matches this.contact.email
+            }
+            
+            
+        }
+    },
     methods:{
         createOrder(){
             this.order.id = Date.now();
-            this.$emit('create', this.order);
-            this.order = {
-                name:"",
-                phone:"",
-            }
+            if (this.checkForm() == true){
+                this.$emit('create', this.order);
+                this.order = {
+                    name:"",
+                    phone:"",
+                }
+            } 
+            
+        },
+        checkForm(){
+            return true
         }
     }
 }

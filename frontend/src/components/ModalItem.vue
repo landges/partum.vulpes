@@ -1,9 +1,22 @@
 <template>
     <!-- Portfolio item 1 modal popup-->
-<div class="portfolio-modal modal fade" id="portfolioModal{{forloop.counter}}" tabindex="-1" role="dialog" aria-hidden="true">
+<div class="portfolio-modal modal fade" 
+    :id="`portfolioModal${forloop.counter}`" 
+    tabindex="-1" 
+    role="dialog" 
+    aria-hidden="true"
+    :class="{
+            'is-show': show
+            }"
+    v-if="show">
+    
     <div class="modal-dialog">
         <div class="modal-content">
-            <div class="close-modal" data-bs-dismiss="modal"><img src="{%static 'img/close-icon.svg'%}" alt="Close modal" /></div>
+            <div class="close-modal" 
+            data-bs-dismiss="modal"
+            @click.stop="hideDialog">
+                <img src="{%static 'img/close-icon.svg'%}" alt="Close modal" />
+            </div>
             <div class="container">
                 <div class="row justify-content-center">
                     <div class="col-lg-8">
@@ -37,8 +50,15 @@
 </template>
 <script>
 import axios from 'axios'
-
+import toggleMixin from '@/mixins/toggleMixin';
 export default{
-    
+    name: 'product-modal',
+    mixins:[toggleMixin],
+    props:{
+        product:{
+            type: Object,
+            required:true,
+        }
+    }
 }
 </script>

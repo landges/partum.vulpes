@@ -1,8 +1,8 @@
 <template>
    <router-view></router-view>
 </template>
-<script src="./assets/js/scripts.js" type="text/javascript"></script>
+<!-- <script src="./assets/js/scripts.js" type="text/javascript"></script> -->
 
-<style lang="scss">
+<!-- <style lang="scss">
 @import 'assets/css/styles.css';
-</style>
+</style> -->

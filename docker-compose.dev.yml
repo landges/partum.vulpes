@@ -62,6 +62,14 @@ services:
       - "db"
 
 
+  # vue:
+  #   image: node:12
+  #   volumes:
+  #     - ./:/code
+  #   working_dir: /code
+  #   env_file:
+  #     - ./.env.dev
+  #   command: bash -c "npm i && npm run build"
 volumes:
   pg_data:
   static_volume:

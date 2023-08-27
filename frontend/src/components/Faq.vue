@@ -11,14 +11,21 @@
                     
                     <div class="accordion-item" v-for="quenstion in faq">
                         <h4 class="accordion-header" id="heading">
-                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse{{quenstion.id}}" aria-expanded="false" aria-controls="collapse{{quenstion.id}}">
+                            <button class="accordion-button collapsed" 
+                            type="button" 
+                            data-bs-toggle="collapse" 
+                            :data-bs-target="`#collapse${quenstion.id}`" 
+                            aria-expanded="false" 
+                            :aria-controls="`collapse${quenstion.id}`">
                                 {{quenstion.title}}
                             </button>
                         </h4>
-                        <div id="collapse{{quenstion.id}}" class="accordion-collapse collapse" aria-labelledby="heading{{quenstion.id}}" data-bs-parent="#accordionExample">
+                        <div :id="`collapse${quenstion.id}`" 
+                        class="accordion-collapse collapse" 
+                        :aria-labelledby="`heading${quenstion.id}`" data-bs-parent="#accordionExample">
                             <div class="accordion-body">
                                 {{quenstion.answer}}
-                            </div>
+                            </div>  
                         </div>
                     </div>
                 </div>

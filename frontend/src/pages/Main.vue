@@ -41,9 +41,7 @@ export default{
     methods:{
         createOrder(order){
             this.orders.push(order);
-            this.confirmOrderVisible = true;
             this.PostOrder(order);
-            console.log(this.confirmOrderVisible);
         },
         async fetchProducts(){
             try{
@@ -86,6 +84,10 @@ export default{
         async PostOrder(order){
             const response = await axios.post('http://127.0.0.1:8000/api/post/order/create', order)
             console.log(response);
+            if (response.status == 201 || response.status == 200    ){
+                console.log('hello')
+                this.confirmOrderVisible = true;
+            }
         },
     },
     mounted(){
